@@ -13,7 +13,17 @@ def validate_guess(guess, word_length=5):
     -------
     bool
         True if guess is valid, False otherwise.
+
+    Examples
+    --------
+    >>> validate_guess("crane")
+    True
+    >>> validate_guess("CRANE")
+    False
+    >>> validate_guess("abc1e")
+    False
     """
+
     if not isinstance(guess, str):
         return False
     if len(guess) != word_length:
@@ -21,6 +31,7 @@ def validate_guess(guess, word_length=5):
     if not guess.isalpha():
         return False
     return guess.islower()
+
 
 
 def check_guess(secret_word, guess):
@@ -38,6 +49,15 @@ def check_guess(secret_word, guess):
     -------
     list
         List of tuples (letter, color) where color is 'green', 'yellow', or 'gray'.
+
+
+    Examples
+    --------
+    >>> check_guess("crane", "react")
+    [('r', 'yellow'), ('e', 'yellow'), ('a', 'green'), ('c', 'yellow'), ('t', 'gray')]
+    >>> check_guess("crane", "crane")
+    [('c', 'green'), ('r', 'green'), ('a', 'green'), ('n', 'green'), ('e', 'green')]
+
     """
     if len(secret_word) != len(guess):
         return []
